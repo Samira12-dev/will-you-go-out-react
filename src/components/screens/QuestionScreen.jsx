@@ -10,7 +10,7 @@ export default function QuestionScreen({ onYes }) {
         <br />
         with <em>me</em>?
       </h1>
-      <p className="subtitle">واش غادي تخرجي معايا؟ 🥹</p>
+      <p className="subtitle">شنو بان ليك نخرجوا نتمشاو؟ 🤔</p>
       <DodgeButton onYes={onYes} />
     </div>
   );

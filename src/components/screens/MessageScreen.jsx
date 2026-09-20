@@ -1,8 +1,5 @@
-import { openWhatsApp } from "../../utils/whatsapp.js";
-
 export default function MessageScreen({ data, update, onFinish }) {
   const handleSend = () => {
-    openWhatsApp(data);
     onFinish();
   };
   return (
@@ -11,7 +8,7 @@ export default function MessageScreen({ data, update, onFinish }) {
       <h2 className="headline">قبل ما نساليو...</h2>
       <p className="subtitle">كاين شي اعتراف، حقيقة، ولا شي حاجة بغيتي تقوليها ليا؟ ❤️</p>
 
-      <textarea
+      <textarea required
         placeholder="كتبي هنا اللي بغيتي تقولي..."
         value={data.message}
         onChange={(e) => update({ message: e.target.value })}

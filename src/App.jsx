@@ -4,19 +4,19 @@ import ProgressSeal from "./components/ProgressSeal.jsx";
 import QuestionScreen from "./components/screens/QuestionScreen.jsx";
 import DateScreen from "./components/screens/DateScreen.jsx";
 import PlanScreen from "./components/screens/PlanScreen.jsx";
-import PlaceScreen from "./components/screens/PlaceScreen.jsx";
 import MessageScreen from "./components/screens/MessageScreen.jsx";
+import ConfirmScreen from "./components/screens/ConfirmScreen.jsx";
 import ResultScreen from "./components/screens/ResultScreen.jsx";
 
-const STEPS = ["question", "date", "plan", "place", "message", "result"];
-const TOTAL_STEPS = 5;
+const STEPS = ["question", "date", "plan", "message", "confirm", "result"];
+const TOTAL_STEPS = 6;
 
 const initialData = {
   date: "",
   time: "",
   plan: "",
-  place: "",
   message: "",
+  finalAnswer: "",
 };
 
 export default function App() {
@@ -46,13 +46,18 @@ export default function App() {
             <DateScreen data={data} update={update} onNext={() => goTo("plan")} />
           )}
           {step === "plan" && (
-            <PlanScreen data={data} update={update} onNext={() => goTo("place")} />
-          )}
-          {step === "place" && (
-            <PlaceScreen data={data} update={update} onNext={() => goTo("message")} />
+            <PlanScreen data={data} update={update} onNext={() => goTo("message")} />
           )}
           {step === "message" && (
-            <MessageScreen data={data} update={update} onFinish={() => goTo("result")} />
+            <MessageScreen data={data} update={update} onFinish={() => goTo("confirm")} />
+          )}
+          {step === "confirm" && (
+            <ConfirmScreen
+              onChoose={(answer) => {
+                update({ finalAnswer: answer });
+                goTo("result");
+              }}
+            />
           )}
           {step === "result" && <ResultScreen data={data} onRestart={restart} />}
         </div>

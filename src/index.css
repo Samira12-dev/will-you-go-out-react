@@ -312,6 +312,16 @@ h2.headline {
   margin-top: 10px;
 }
 
+.confirm-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 360px;
+  margin-top: 10px;
+}
+
 /* Fields */
 .field-group {
   width: 100%;

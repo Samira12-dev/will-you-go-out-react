@@ -12,6 +12,25 @@ function formatDate(dateStr) {
 
 export default function ResultScreen({ data, onRestart }) {
   const [copied, setCopied] = useState(false);
+  const accepted = data.finalAnswer === "Yes ❤️";
+
+  if (!accepted) {
+    return (
+      <div className="screen">
+        <div className="big-heart">💔</div>
+        <h1 className="headline" dir="rtl" lang="ar" style={{ fontFamily: "var(--font-arabic)" }}>
+          صافي... لا 🙈
+        </h1>
+        <p className="subtitle">قلتي لا... واش مؤكدة؟ 😢</p>
+        <p className="result-note">ما تنساش... "Yes ❤️" راها غير ضغطة وحدة بعيدة 🌹</p>
+        <div className="result-actions">
+          <button type="button" className="btn btn-primary" onClick={onRestart}>
+            من جديد ↻
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   const handleCopy = async () => {
     const text = buildAnswerText(data);
@@ -41,7 +60,7 @@ export default function ResultScreen({ data, onRestart }) {
       <h1 className="headline" dir="rtl" lang="ar" style={{ fontFamily: "var(--font-arabic)" }}>
         صافي سالينا ❤️
       </h1>
-      <p className="subtitle">شكراً حيث قلتي Yes 🥹</p>
+      <p className="subtitle">mmm good answer 🥹</p>
 
       <div className="summary-card">
         <div className="row">
@@ -56,14 +75,16 @@ export default function ResultScreen({ data, onRestart }) {
           <span className="label">💕 Plan</span>
           <span className="value">{data.plan}</span>
         </div>
-        <div className="row">
-          <span className="label">📍 Place</span>
-          <span className="value">{data.place}</span>
-        </div>
         {data.message && (
           <div className="row">
             <span className="label">💌 Message</span>
             <span className="value">{data.message}</span>
+          </div>
+        )}
+        {data.finalAnswer && (
+          <div className="row">
+            <span className="label">😭 Final answer</span>
+            <span className="value">{data.finalAnswer}</span>
           </div>
         )}
       </div>
