@@ -10,21 +10,31 @@ function formatDate(dateStr) {
   });
 }
 
-export default function ResultScreen({ data, onRestart }) {
+export default function ResultScreen({ data, onRestart, onChoose }) {
   const [copied, setCopied] = useState(false);
   const accepted = data.finalAnswer === "Yes ❤️";
 
   if (!accepted) {
+    const sayYes = () => onChoose("Yes ❤️");
+    const sendYes = () => {
+      sayYes();
+      openWhatsApp({ ...data, finalAnswer: "Yes ❤️" });
+    };
     return (
       <div className="screen">
         <div className="big-heart">💔</div>
         <h1 className="headline" dir="rtl" lang="ar" style={{ fontFamily: "var(--font-arabic)" }}>
-          صافي... لا 🙈
+          منعرفش No 🙈
         </h1>
-        <p className="subtitle">قلتي لا... واش مؤكدة؟ 😢</p>
-        <p className="result-note">ما تنساش... "Yes ❤️" راها غير ضغطة وحدة بعيدة 🌹</p>
+        <p className="subtitle">كيفاش No؟ ماكاينش غير Yes ❤️</p>
         <div className="result-actions">
-          <button type="button" className="btn btn-primary" onClick={onRestart}>
+          <button type="button" className="btn btn-primary" onClick={sayYes}>
+            Yes ❤️
+          </button>
+          <button type="button" className="btn btn-ghost" onClick={sendYes}>
+            Send 💬
+          </button>
+          <button type="button" className="btn btn-ghost" onClick={onRestart}>
             من جديد ↻
           </button>
         </div>

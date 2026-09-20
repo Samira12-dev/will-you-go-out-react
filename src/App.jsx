@@ -59,7 +59,13 @@ export default function App() {
               }}
             />
           )}
-          {step === "result" && <ResultScreen data={data} onRestart={restart} />}
+          {step === "result" && (
+            <ResultScreen
+              data={data}
+              onRestart={restart}
+              onChoose={(answer) => update({ finalAnswer: answer })}
+            />
+          )}
         </div>
       </div>
     </div>
