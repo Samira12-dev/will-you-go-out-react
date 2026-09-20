@@ -1,4 +1,4 @@
-import { WHATSAPP_NUMBER } from "../config.js";
+const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "+212606675472";
 
 function formatDate(dateStr) {
   if (!dateStr) return "";
