@@ -1,7 +1,7 @@
 export default function ConfirmScreen({ onChoose }) {
   return (
     <div className="screen">
-      <div className="envelope">😭</div>
+      <div className="envelope">🤔</div>
       <h2 className="headline">  اه نسيت، ف الأول كنتي اختاريتي لا... مازال لا؟ 😜  </h2>
       <p className="subtitle">Yes ❤️ = بغيت نخرجو / No 🙈 = لا، مابغيتش</p>
 
